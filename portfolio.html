@@ -315,8 +315,9 @@
 
     <footer class="footer">
       <div class="container">
+        <!-- Address -->
         <div class="address-wrapper">
-          <a class="logo" href="./index.html">Web<span class="dark">Studio</span></a>
+          <a class="logo" href="./">Web<span class="dark">Studio</span></a>
           <address class="footer-address">
             <ul class="footer-address-list list">
               <li><p class="footer-address-text">г. Киев, пр-т Леси Украинки, 26</p></li>
@@ -333,8 +334,10 @@
             </ul>
           </address>
         </div>
+
+        <!-- Socials -->
         <div class="footer-socials">
-          <p class="join-us"><strong>присоединяйтесь</strong></p>
+          <h2 class="join-us">присоединяйтесь</h2>
           <ul class="footer-socials-list list">
             <li class="item">
               <a href="" class="link" aria-label="instagram">
@@ -369,6 +372,29 @@
             </li>
           </ul>
         </div>
+
+        <!-- Subscribe -->
+        <form class="footer-form" action="#">
+          <label for="footer-subscribe-email">
+            <h2 class="footer-form-title">Подпишитесь на рассылку</h2>
+          </label>
+
+          <div class="subscrtibe-wrapper">
+            <input
+              id="footer-subscribe-email"
+              class="footer-form-input input-highlight"
+              type="email"
+              name="subscribe-email"
+              placeholder="E-mail"
+            />
+            <button class="footer-form-submit btn btn-primary" type="submit">
+              Подписаться
+              <svg class="icon" width="24" height="24">
+                <use href="./images/icons.svg#send-email"></use>
+              </svg>
+            </button>
+          </div>
+        </form>
       </div>
     </footer>
   </body>

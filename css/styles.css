@@ -37,6 +37,20 @@ ul {
 
 /* Common */
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
 .container {
   width: 1200px;
   margin: 0 auto;
@@ -74,6 +88,13 @@ ul {
 .btn-primary {
   color: var(--secondary-light-color);
   background-color: var(--accent-color);
+
+  transition: background-color var(--default-transition-duration)
+    var(--default-transition-timing-function);
+}
+
+.btn-primary:hover {
+  background-color: var(--hover-button-color);
 }
 
 .btn-secondary {
@@ -98,6 +119,16 @@ ul {
 
 .icon {
   fill: currentColor;
+}
+
+.input-highlight:focus,
+.input-highlight:focus-visible {
+  border-color: var(--accent-color);
+  outline: var(--accent-color);
+}
+
+.input-highlight:focus + .icon {
+  fill: var(--accent-color);
 }
 
 /* Header */
@@ -233,13 +264,13 @@ ul {
   line-height: 1.88;
   letter-spacing: 0.06em;
 
-  transition: background-color var(--default-transition-duration)
-    var(--default-transition-timing-function);
+  /* transition: background-color var(--default-transition-duration)
+    var(--default-transition-timing-function); */
 }
 
-.hero-button:hover {
+/* .hero-button:hover {
   background-color: var(--hover-button-color);
-}
+} */
 
 /* Advantages */
 .features-list {
@@ -465,7 +496,8 @@ ul {
   text-transform: uppercase;
   color: var(--secondary-light-color);
   font-weight: 700;
-  line-height: 1.14;
+  font-size: 14px;
+  line-height: 1.17;
 }
 
 .footer-socials-list {
@@ -490,6 +522,64 @@ ul {
 
 .footer-socials-list .link:hover {
   background-color: var(--accent-color);
+}
+
+.footer-form {
+  margin-left: 93px;
+}
+.footer-form-title {
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 1.17;
+  color: var(--secondary-light-color);
+}
+
+.subscrtibe-wrapper {
+  display: flex;
+}
+
+.footer-form-input {
+  padding: 0;
+  padding-left: 16px;
+  width: 358px;
+
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 16px;
+  line-height: 1.25;
+  letter-spacing: 0.03em;
+
+  background-color: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.15));
+  border-radius: 4px;
+
+  transition: border-color var(--default-transition-duration)
+    var(--default-transition-timing-function);
+}
+
+/* .footer-form-input:focus,
+.footer-form-input:focus-visible {
+  border-color: var(--accent-color);
+  outline: var(--accent-color);
+} */
+
+.footer-form-submit {
+  padding: 10px 29px;
+  margin-left: 12px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.06em;
+
+  display: flex;
+  align-items: center;
+}
+
+.footer-form-submit > .icon {
+  margin-left: 10px;
 }
 
 /* Portfolio */
@@ -623,13 +713,14 @@ ul {
 }
 
 .modal {
+  padding: 40px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 
   min-width: 528px;
-  min-height: 581px;
+  /* min-height: 581px; */
 
   background-color: var(--secondary-light-color);
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 1px 1px rgba(0, 0, 0, 0.14),
@@ -641,39 +732,163 @@ ul {
   position: absolute;
   top: 8px;
   right: 8px;
+  cursor: pointer;
 
-  border: none;
   padding: 0;
 
   width: 30px;
   height: 30px;
 
+  color: var(--secondary-dark-color);
+
   background-color: inherit;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.close-btn::before,
-.close-btn::after {
-  content: '';
+.close-btn:hover {
+  color: var(--accent-color);
+}
+
+.modal-title {
+  margin-bottom: 12px;
+
+  color: var(--primary-header-color);
+  font-size: 20px;
+  line-height: 1.15;
+  text-align: center;
+}
+
+.modal-form-label {
+  display: block;
+  font-size: 12px;
+  line-height: 1.167;
+  letter-spacing: 0.01em;
+}
+
+.modal-form-label + .modal-form-label {
+  margin-top: 10px;
+}
+
+.form-input-wrapper {
+  position: relative;
+  color: var(--primary-header-color);
+}
+
+.form-input-wrapper {
+  margin-top: 4px;
+}
+
+.form-input-wrapper > .icon {
   position: absolute;
   top: 50%;
-  left: 50%;
-
-  width: 11px;
-  height: 1.5px;
-
-  background-color: var(--secondary-dark-color);
+  left: 12px;
+  transform: translateY(-50%);
 }
 
-.close-btn::before {
-  transform: translate(-50%, -50%) rotate(-45deg);
+.form-input {
+  display: block;
+  height: 40px;
+  width: 100%;
+
+  font-size: 16px;
+  padding-left: 42px;
+
+  border: 1px solid rgba(33, 33, 33, 0.2);
+  border-radius: 4px;
+
+  transition: border-color var(--default-transition-duration)
+    var(--default-transition-timing-function);
 }
 
-.close-btn::after {
-  transform: translate(-50%, -50%) rotate(45deg);
+/* .form-input:focus,
+.form-input:focus-visible {
+  border-color: var(--accent-color);
+  outline: var(--accent-color);
 }
 
-.close-btn:active {
-  box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.12);
+.form-input:focus + .icon {
+  fill: var(--accent-color);
+} */
+
+.form-input.form-comment {
+  height: 120px;
+  resize: none;
+  padding: 12px 16px;
+}
+
+.form-comment::placeholder,
+.form-comment::-webkit-input-placeholder {
+  font-size: 14px;
+  line-height: 1.14;
+  letter-spacing: 0.01em;
+  color: rgba(117, 117, 117, 0.5);
+}
+
+.agreement-wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+.modal-form-agreement {
+  margin-top: 20px;
+  padding-left: 23px;
+  position: relative;
+
+  line-height: 1.71;
+
+  display: inline-flex;
+  justify-content: center;
+}
+
+.modal-form-agreement .checkbox-icon {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.checkbox-icon {
+  border: 1.5px solid var(--primary-header-color);
+  fill: none;
+  border-radius: 2px;
+
+  transition: background-color var(--default-transition-duration)
+      var(--default-transition-timing-function),
+    border var(--default-transition-duration) var(--default-transition-timing-function);
+}
+
+.form-checkbox:checked ~ .checkbox-icon {
+  border: var(--accent-color);
+  background-color: var(--accent-color);
+  fill: var(--secondary-light-color);
+}
+
+.agreement-conditions-link {
+  line-height: 1.71;
+  color: var(--accent-color);
+}
+
+.agreement-conditions-link:visited {
+  color: var(--accent-color);
+}
+
+.modal-form-submit {
+  display: block;
+
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 10px 55px;
+
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 1.875;
+  letter-spacing: 0.06em;
+
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
 }
